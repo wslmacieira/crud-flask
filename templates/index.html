@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block head %}
+<title>Cadastro Cliente</title>
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="content">
+    <h1>Cadastro de Cliente</h1>
+    <form action="/" method="POST">
+      <label for="name"><b>NOME*</b></label>
+      <input type="text" placeholder="Nome completo" name="name" required />
+      <label for="email"><b>E-MAIL*</b></label>
+      <input type="text" placeholder="Seu melhor email" name="email" required />
+      <label for="endereco"><b>ENDEREÇO*</b></label>
+      <input
+        type="text"
+        placeholder="Endereço completo"
+        name="endereco"
+        required
+      />
+      <label for="telefone"><b>TELEFONE*</b></label>
+      <input type="text" placeholder="Telefone" name="telefone" required />
+      <button type="submit" class="submit">Salvar</button>
+    </form>
+  </div>
+</div>
+<br />
+<div class="container">
+  <div class="content">
+    <h1>Lista de Clientes</h1>
+    {% if clientes|length < 1 %}
+    <h4 style="text-align: center">Nenhum cliente cadastrado!</h4>
+    {% else %}
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+      </tr>
+      {% for cliente in clientes %}
+      <tr>
+        <td>{{ cliente.name }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.endereco }}</td>
+        <td>{{ cliente.telefone }}</td>
+        <td>
+          <a href="/delete/{{cliente.id}}">Deletar</a>
+          <br />
+          <a href="/update/{{cliente.id}}">Atualizar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block head %}
+<title>Cadastro de Cliente</title>
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="content">
+    <h1>Atualizar Cliente</h1>
+
+    <div class="form">
+      <form action="/update/{{cliente.id}}" method="POST">
+        <label for="name"><b>NOME*</b></label>
+        <input type="text" name="name" id="name" required value="{{cliente.name}}"/>
+        <label for="email"><b>E-MAIL*</b></label>
+        <input type="text" name="email" id="email" required value="{{cliente.email}}"/>
+        <label for="endereco"><b>ENDEREÇO*</b></label>
+        <input type="text" name="endereco" id="endereco" required value="{{cliente.endereco}}"/>
+        <label for="telefone"><b>TELEFONE*</b></label>
+        <input type="text" name="telefone" id="endereco" required value="{{cliente.telefone}}"/>
+        <button type='submit' class="submit" value="Update">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
